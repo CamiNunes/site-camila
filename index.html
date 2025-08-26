@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camila Nunes — Desenvolvedora de Software</title>
+  <meta name="description" content="Portfólio e apresentação de Camila Nunes, Desenvolvedora de Software desde 2009.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Paleta escura baseada no seu logo: azul, verde e cinza */
+      --navy:#0f2a3f;      /* azul principal */
+      --blue:#1a2b3f;      /* azul mais escuro para UI */
+      --green:#3aa365;     /* verde do subtítulo/realces */
+      --gray:#9aa6b2;      /* texto secundário */
+      --ink:#e6edf3;       /* texto primário em dark */
+      --paper:#0b1220;     /* fundo geral escuro */
+      --card:#0f1726;      /* cartões */
+      --muted:#121b2b;     /* superfícies sutis */
+      --radius:18px; 
+      --shadow:0 16px 36px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink);
+      background:radial-gradient(1200px 800px at 20% -10%, rgba(58,163,101,.18), transparent 40%),
+                 radial-gradient(900px 700px at 110% 30%, rgba(15,42,63,.35), transparent 45%),
+                 linear-gradient(180deg, #0a111e, var(--paper));}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(10,17,30,.6);backdrop-filter:saturate(160%) blur(10px);box-shadow:0 2px 12px rgba(0,0,0,.4)}
+    .nav-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand img{height:44px;width:44px;display:block}
+    .brand .name{font-weight:700;color:#cfe6ff}
+    .brand .role{font-weight:600;color:var(--green);font-size:.85rem;line-height:1}
+    .nav-links{display:flex;gap:22px}
+    .nav-links a{color:#c1d2e6;text-decoration:none;font-weight:600;opacity:.9}
+    .nav-links a:hover{opacity:1}
+    .burger{display:none;border:0;background:none;font-size:24px;color:#c1d2e6}
+    @media(max-width:840px){.nav-links{position:fixed;inset:64px 16px auto 16px;display:none;flex-direction:column;background:var(--card);border:1px solid #1e2a3b;border-radius:16px;box-shadow:var(--shadow);padding:18px}.nav-links.show{display:flex}.burger{display:block}}
+
+    /* SECTIONS */
+    section{max-width:1200px;margin:0 auto;padding:64px 20px}
+    .section-title{color:#cfe6ff;font-size:2rem;margin:0 0 6px}
+    .section-sub{color:var(--gray);margin:0 0 28px}
+
+    /* HERO */
+    .hero{max-width:1200px;margin:48px auto 0;padding:32px 20px 32px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #1e2a3b}
+    .hero .copy{padding:36px}
+    .eyebrow{color:var(--green);font-weight:700;letter-spacing:.14em;font-size:.78rem;text-transform:uppercase}
+    h1{margin:.3em 0 .2em;font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.05;color:#e9f1ff}
+    .lead{color:#c1d2e6;font-size:1.05rem}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .badge{font-size:.78rem;background:#0e1a2b;color:#cfe6ff;padding:8px 12px;border-radius:999px;font-weight:600;border:1px solid #1e2a3b}
+    .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{border:0;border-radius:14px;padding:12px 18px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s, box-shadow .2s}
+    .btn-primary{background:var(--green);color:#061019}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 24px rgba(58,163,101,.35)}
+    .btn-ghost{background:#0e1a2b;color:#b2e7c9;border:1px solid #1e2a3b}
+    .hero .visual{padding:20px;display:grid;place-items:center;min-height:260px}
+    .logo-big{width:min(420px,90%);height:auto}
+
+    /* CARDS */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    @media(max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.cards{grid-template-columns:1fr}}
+    .stat{padding:26px}
+    .stat h3{margin:0;color:#e9f1ff;font-size:1.8rem}
+    .stat p{margin:6px 0 0;color:#c1d2e6}
+
+    /* SERVICES */
+    .service .icon{font-size:28px;line-height:1}
+    .service h3{margin:12px 0 6px;color:#e9f1ff}
+    .service p{margin:0;color:#c1d2e6}
+
+    /* EXPERIENCE cards */
+    .xp{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    @media(max-width:1100px){.xp{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.xp{grid-template-columns:1fr}}
+    .xp .item{padding:20px}
+    .xp .when{color:#9eb2c8;font-weight:600}
+
+    /* PROJECT */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.grid{grid-template-columns:1fr}}
+    .project .content{padding:18px}
+    .project h3{margin:0 0 6px;color:#e9f1ff}
+    .project p{color:#c1d2e6}
+
+    /* FORM CONTATO – layout aprimorado */
+    form.contact{max-width:860px;margin:auto;display:grid;gap:16px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}}
+    .field{position:relative}
+    .label{display:block;color:#c1d2e6;font-weight:600;margin:0 0 6px}
+    input, textarea{width:100%;background:#0e1a2b;border:1px solid #23344a;border-radius:12px;padding:12px 14px;color:#e6edf3;font:inherit;outline:none}
+    input::placeholder, textarea::placeholder{color:#6d7f93}
+    input:focus, textarea:focus{border-color:var(--green);box-shadow:0 0 0 4px rgba(58,163,101,.15)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* FOOTER */
+    footer{padding:28px 20px 60px;text-align:center;color:#c1d2e6}
+    .socials{display:flex;gap:14px;justify-content:center;margin:12px 0 0}
+    .socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#0e1a2b;border:1px solid #1e2a3b;color:#cfe6ff;text-decoration:none;font-weight:800}
+
+    /* FAB */
+    .fab{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;gap:12px}
+    .float-btn{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#061019;text-decoration:none;box-shadow:0 12px 24px rgba(0,0,0,.45)}
+    .wa{background:#25D366}
+    .top{background:#0e1a2b;color:#cfe6ff;border:1px solid #1e2a3b;opacity:0;visibility:hidden;transform:translateY(10px);transition:.25s}
+    .top.show{opacity:1;visibility:visible;transform:none}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s, transform .6s}
+    .reveal.visible{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="Camila Nunes, Desenvolvedora de Software">
+        <!-- Coloque seu logo transparente em assets/logo.png -->
+        <img id="logoBrand" src="assets/logo.png" alt="Logo Camila Nunes"/>
+        <span class="title"><span class="name">Camila Nunes</span><span class="role">DESENVOLVEDORA DE SOFTWARE</span></span>
+      </a>
+      <button class="burger" aria-label="abrir menu" onclick="toggleMenu()">☰</button>
+      <div id="navLinks" class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#formacao">Formação</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+    <div class="copy card reveal">
+      <div class="eyebrow">Desde 2009</div>
+      <h1>Construo soluções de software <span style="color:var(--green)">sólidas</span> e com foco no resultado.</h1>
+      <p class="lead">Full‑stack com DDD/Hexagonal, microsserviços, mensageria e front‑ends modernos. Produtos bem acabados, código elegante e qualidade.</p>
+      <div class="badges">
+        <span class="badge">.NET · C#</span>
+        <span class="badge">MongoDB & SQL</span>
+        <span class="badge">RabbitMQ / Kafka</span>
+        <span class="badge">AWS</span>
+        <span class="badge">DDD · Clean Architecture</span>
+      </div>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contato">Vamos conversar</a>
+        <a class="btn btn-ghost" href="#projetos">Ver projetos</a>
+      </div>
+    </div>
+    <div id="heroVisual" class="visual card reveal" aria-hidden="true">
+      <img id="logoHero" class="logo-big" src="assets/logo.png" alt="Logo grande" />
+    </div>
+  </header>
+
+  <!-- Destaques em CARDS -->
+  <section id="highlights" class="reveal">
+    <div class="cards">
+      <div class="card stat"><h3>15+ anos</h3><p>de experiência (desde 2009).</p></div>
+      <div class="card stat"><h3>Stack .NET</h3><p>C# · DDD · Hexagonal · Dapper/EF.</p></div>
+      <div class="card stat"><h3>Cloud & MQ</h3><p>AWS, Kafka, RabbitMQ, observabilidade.</p></div>
+    </div>
+  </section>
+
+  <!-- Serviços em CARDS -->
+  <section id="servicos">
+    <h2 class="section-title">Como posso ajudar</h2>
+    <p class="section-sub">Entrega com foco em resultado, qualidade e escalabilidade.</p>
+    <div class="cards">
+      <article class="card service" style="padding:22px"><div class="icon">🧩</div><h3>Arquitetura & APIs</h3><p>DDD/Hexagonal, REST versionado, testes e documentação.</p></article>
+      <article class="card service" style="padding:22px"><div class="icon">🔗</div><h3>Integrações & Eventos</h3><p>RabbitMQ/Kafka, DLQ, retries, resiliência e monitoramento.</p></article>
+      <article class="card service" style="padding:22px"><div class="icon">📊</div><h3>Modernização & Performance</h3><p>Refatoração de legados, otimização com Dapper e tuning SQL.</p></article>
+    </div>
+  </section>
+
+  <!-- Experiência em CARDS -->
+  <section id="experiencia">
+    <h2 class="section-title">Experiência</h2>
+    <p class="section-sub">Algumas posições e responsabilidades (resumo do currículo).</p>
+    <div class="xp">
+      <article class="card item"><div class="when">Out/2024 – Mar/2025</div><h3>GFT Technologies · Dev C# .NET</h3><p>Pagamentos em lote via <strong>CNAB240</strong>, arquitetura <strong>Hexagonal</strong> + <strong>DDD</strong>, integrações com <strong>Kafka</strong>, <strong>AWS S3</strong> e <strong>Secrets Manager</strong>, otimizações com <strong>Dapper</strong> e testes.</p></article>
+      <article class="card item"><div class="when">Out/2023 – Set/2024</div><h3>Summit (BRA) · Dev C# .NET</h3><p>Modernização de legados, novas features em <strong>.NET Core</strong>, mensageria com <strong>RabbitMQ</strong>, SQL avançado em <strong>SQL Server</strong>/<strong>MySQL</strong>.</p></article>
+      <article class="card item"><div class="when">Dez/2021 – Jul/2023</div><h3>My Profit · Dev C# .NET</h3><p>Back‑end em .NET Framework/Core, integrações via RabbitMQ e rotinas de <strong>SQL Server</strong>.</p></article>
+      <article class="card item"><div class="when">Mar/2019 – Out/2021</div><h3>Fagron Tech · Dev Jr. C#</h3><p>Projetos para o setor farmacêutico com <strong>.NET Core</strong>, <strong>SQL Server</strong> e <strong>RabbitMQ</strong>.</p></article>
+      <article class="card item"><div class="when">Dez/2016 – Mar/2019</div><h3>Lazco Softhouse · Delphi/C#</h3><p>Soluções para gestão de usinas com <strong>Delphi</strong>, <strong>SQL Server</strong> e automações.</p></article>
+      <article class="card item"><div class="when">Mai/2016 – Out/2016</div><h3>Prime Control · QA</h3><p>Automação de testes com <strong>C#</strong> e <strong>Coded UI</strong>, validações de BD e integrações.</p></article>
+    </div>
+  </section>
+
+  <!-- Projetos em CARDS -->
+  <section id="projetos">
+    <h2 class="section-title">Projetos em destaque</h2>
+    <p class="section-sub">Seleção de iniciativas técnicas.</p>
+    <div class="grid">
+      <article class="project card reveal"><div class="content"><h3>Pagamentos · CNAB240</h3><p>Pipeline de remessas/retornos, integrações bancárias e auditoria. Hexagonal + testes.</p></div></article>
+      <article class="project card reveal"><div class="content"><h3>Eventos e Integrações</h3><p>Arquitetura orientada a eventos com <strong>RabbitMQ</strong> e <strong>Kafka</strong>, DLQ, retries e observabilidade.</p></div></article>
+      <article class="project card reveal"><div class="content"><h3>Modernização de Legados</h3><p>Extração para serviços, DDD, camadas limpas e performance com <strong>Dapper</strong>.</p></div></article>
+    </div>
+  </section>
+
+  <!-- Formação -->
+  <section id="formacao">
+    <h2 class="section-title">Formação</h2>
+    <div class="cards">
+      <div class="card" style="padding:22px"><h3 style="margin:0 0 8px;color:#e9f1ff">Bacharelado em Ciência da Computação</h3><p class="section-sub" style="margin:0">Universidade Anhanguera – Jundiaí · 2010–2013</p></div>
+      <div class="card" style="padding:22px"><h3 style="margin:0 0 8px;color:#e9f1ff">Tecnólogo em Sistemas para Internet</h3><p class="section-sub" style="margin:0">Universidade Anhanguera – EAD · 2024 – atual</p></div>
+    </div>
+  </section>
+
+  <!-- Contato (Form Pro) -->
+  <section id="contato">
+    <h2 class="section-title">Contato</h2>
+    <p class="section-sub">Quer conversar sobre um projeto? Me conte um pouco e retorno em breve.</p>
+    <form class="card contact reveal" onsubmit="return sendEmail(event)">
+      <div class="form-grid">
+        <div class="field"><label class="label" for="nome">Nome</label><input required id="nome" type="text" name="nome" placeholder="Seu nome"></div>
+        <div class="field"><label class="label" for="email">E‑mail</label><input required id="email" type="email" name="email" placeholder="seu@email.com"></div>
+      </div>
+      <div class="field"><label class="label" for="assunto">Assunto</label><input id="assunto" name="assunto" type="text" placeholder="Ex.: Plataforma para proposta de cartão"></div>
+      <div class="field"><label class="label" for="mensagem">Mensagem</label><textarea required id="mensagem" name="mensagem" rows="6" placeholder="Descreva objetivos, prazos e orçamento (se tiver)"></textarea></div>
+      <div class="actions">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+        <a class="btn btn-ghost" href="https://wa.me/5599999999999?text=Ol%C3%A1%20Camila!%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <p id="formStatus" class="section-sub" style="margin:8px 0 0;display:none"></p>
+    </form>
+  </section>
+
+  <footer>
+    <div class="brand" style="justify-content:center">
+      <img id="logoFoot" src="assets/logo.png" alt="Logo Camila"/>
+      <span class="title"><span class="name">Camila Nunes</span><span class="role">DESENVOLVEDORA DE SOFTWARE</span></span>
+    </div>
+    <div class="socials"><a href="#" aria-label="GitHub">GH</a><a href="https://www.linkedin.com/in/camila-viana-nunes/" target="_blank" aria-label="LinkedIn">in</a><a href="mailto:cvn.camila@gmail.com" aria-label="Email">@</a></div>
+    <p style="margin-top:10px;color:#9eb2c8">© <span id="year"></span> Camila Nunes. Todos os direitos reservados.</p>
+  </footer>
+
+  <div class="fab">
+    <a class="float-btn wa" href="https://wa.me/5599999999999?text=Ol%C3%A1%20Camila!%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" aria-label="WhatsApp">💬</a>
+    <a id="btnTop" class="float-btn top" href="#home" aria-label="Voltar ao topo">↑</a>
+  </div>
+
+  <script>
+    function toggleMenu(){ document.getElementById('navLinks').classList.toggle('show'); }
+    const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:.15});
+    document.querySelectorAll('.reveal, .cards .card, .xp .item, .grid .project').forEach(el=>io.observe(el));
+    const btnTop=document.getElementById('btnTop');
+    window.addEventListener('scroll',()=>{const y=scrollY||document.documentElement.scrollTop;btnTop.classList.toggle('show',y>600)});
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // Carregamento "robusto" do logo: verifica e alerta no console se não encontrar
+    function ensureLogo(id){
+      const el=document.getElementById(id);
+      if(!el) return;
+      const src=el.getAttribute('src');
+      const img=new Image();
+      img.onload=()=>{ el.src=src; };
+      img.onerror=()=>{
+        console.warn('[Logo] Não encontrado em', src, '— coloque seu arquivo em /assets/logo.png');
+        // mantém o layout; se quiser ocultar, descomente abaixo:
+        // el.closest('.visual')?.style.setProperty('display','none');
+      };
+      img.src=src;
+    }
+    ['logoBrand','logoHero','logoFoot'].forEach(ensureLogo);
+
+    // Contato (mailto) + feedback visual
+    function sendEmail(ev){
+      ev.preventDefault();
+      const d=new FormData(ev.target);
+      const nome=encodeURIComponent(d.get('nome'));
+      const email=encodeURIComponent(d.get('email'));
+      const assunto=encodeURIComponent(d.get('assunto')||'Contato pelo site');
+      const msg=encodeURIComponent(d.get('mensagem'));
+      const body=`Nome: ${decodeURIComponent(nome)}%0AEmail: ${decodeURIComponent(email)}%0A%0A${decodeURIComponent(msg)}`;
+      window.location.href=`mailto:cvn.camila@gmail.com?subject=${assunto}&body=${body}`;
+      const ok=document.getElementById('formStatus');
+      ok.style.display='block';
+      ok.style.color='#b2e7c9';
+      ok.textContent='Tudo certo! Seu cliente de e-mail foi aberto com a mensagem.';
+      return false;
+    }
+  </script>
+
+  <!-- Instruções: salve o logo (o PNG do seu print, com fundo transparente) como assets/logo.png. -->
+</body>
+</html>
